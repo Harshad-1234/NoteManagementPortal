@@ -1,0 +1,84 @@
+﻿@page
+@model NoteManagementPortal.Pages.SignUpModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+<div class="form-container">
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" id="errorMessage">@Model.ErrorMessage</div>
+    }
+    <form method="post">
+        <h3 style="margin-bottom: 50px;text-align:center" >@ViewData["Title"]</h3>
+        <label for="Username">Username</label>
+        <input asp-for="Username" style="width: 300px" maxlength="20" />
+
+        <label for="Mobile">Mobile</label>
+        <input asp-for="Mobile" style="width: 300px" maxlength="10" />
+
+        <label for="Email">Email</label>
+        <input asp-for="Email" style="width: 300px" maxlength="25" />
+
+        <label for="Password">Password</label>
+        <input asp-for="Password" type="password" style="width: 300px" maxlength="20" />
+
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input asp-for="ConfirmPassword" type="password" style="width: 300px" maxlength="20" />
+
+        <button type="submit" style="margin-top: 30px; width: 300px">Sign Up</button>
+    </form>
+
+
+    <a asp-page="./Login" class="btn btn-link" style="margin-left:80px">Go back to Login</a>
+</div>
+</div>
+
+<style>
+    .form-container {
+        width: 350px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+        .form-container label,
+        .form-container input,
+        .form-container button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+</style>
+
+<script>
+
+
+
+    $(document).ready(function () {
+
+        $('#profileDiv').css('display', 'none');
+        $('#navBrandTitle').css('margin-left', '535px');
+
+        var errorMessage = document.getElementById('errorMessage');
+        if (errorMessage) {
+            // Set a timeout to hide the div after 5 seconds (5000 milliseconds)
+            setTimeout(function () {
+                errorMessage.style.display = 'none';
+            }, 3000); // 5000 milliseconds = 5 seconds
+        }
+
+
+    });
+</script>

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Notes Management Portal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NoteManagementPortal.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" asp-append-version="true" />
+   @*  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> *@
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+@*     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> *@
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.0/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+  
+
+
+
+</head>
+<body style="background-color:azure">
+    <header >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 " id="navbar">
+            <div class="container text-center">
+                <div class="navbar-brand" asp-area=""  id="navBrandTitle" >@ViewData["NavigationBrand"]</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+
+                   @*  <button type="button" class="add-button pulse-animation" id="addBtn" onclick="openCreateModal()" style="margin-top:15px;border:none;background-color:white;margin-bottom:12px;margin-right:-852px;margin-left:766px">
+                        <img src="~/Images/add.png" alt="add Icon" />
+
+                    </button> *@
+
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <a onclick="openCreateModal()" class="btn btn-primary" id="addBtn" style="margin-left:790px;height:38px;width:90px;display:none;margin-top:15px;margin-bottom:8px;color:white" data-toggle="tooltip" data-placement="bottom" title="Add new note">Add</a>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                    @*     <a onclick="SignOut()" class="btn btn-primary" id="signOutBtn" style="height:38px;width:90px;display:none;margin-top:15px;margin-bottom:8px">Sign out</a> *@
+
+                        <div class="dropdown" id="profileDiv">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left:12px;margin-top:7px">
+                                Profile
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="#" onclick="DisplayProfile();">Edit Profile</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="ChangePasswordModal()">Change Password</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" onclick="SignOut()">Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+
+                 
+                </div>
+
+                
+            </div>
+
+            
+
+        </nav>
+    </header>
+    <div class="container" >
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container" style="text-align:center">
+            &copy; 2024 - NoteManagementPortal - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+@*     <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+    
+   
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+
+</html>
+
